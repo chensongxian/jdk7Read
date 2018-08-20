@@ -36,6 +36,8 @@
 package java.util.concurrent.locks;
 
 /**
+ * 一个可由一个线程独占拥有的同步器。这个类是创建锁和相关同步器的基础。本身并不管理或使用此信息。
+ * 然而，子类和相关工具类可能使用或维护适当的值来帮助控制和监视访问并提供诊断
  * A synchronizer that may be exclusively owned by a thread.  This
  * class provides a basis for creating locks and related synchronizers
  * that may entail a notion of ownership.  The
@@ -59,11 +61,13 @@ public abstract class AbstractOwnableSynchronizer
     protected AbstractOwnableSynchronizer() { }
 
     /**
+     * 独占模式同步的当前所有者，不进行序列化
      * The current owner of exclusive mode synchronization.
      */
     private transient Thread exclusiveOwnerThread;
 
     /**
+     * 设置当前拥有独占访问权限的线程
      * Sets the thread that currently owns exclusive access. A
      * <tt>null</tt> argument indicates that no thread owns access.
      * This method does not otherwise impose any synchronization or
@@ -74,6 +78,7 @@ public abstract class AbstractOwnableSynchronizer
     }
 
     /**
+     * 返回当前拥有独占访问权限的线程
      * Returns the thread last set by
      * <tt>setExclusiveOwnerThread</tt>, or <tt>null</tt> if never
      * set.  This method does not otherwise impose any synchronization

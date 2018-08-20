@@ -299,8 +299,10 @@ public abstract class AbstractQueuedSynchronizer
     protected AbstractQueuedSynchronizer() { }
 
     /**
+     * 等待队列节点类
      * Wait queue node class.
      *
+     * 这个等待队列是CLH锁队列的变体，CLH锁通常用于自旋锁
      * <p>The wait queue is a variant of a "CLH" (Craig, Landin, and
      * Hagersten) lock queue. CLH locks are normally used for
      * spinlocks.  We instead use them for blocking synchronizers, but
